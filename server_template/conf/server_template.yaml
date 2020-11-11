@@ -1,0 +1,18 @@
+Control:
+    DieTimeout: 5s
+
+Log:
+    File: "/tmp/server_template/log"
+    File: "/dev/stderr"
+    File: "/dev/stdout"
+    # trace/debug/info/warn/error/fatal/panic
+    Mask: "info" 
+
+
+Dummy:
+  StringSlice: 
+    - A
+    - B
+    - C
+    - D
+    - E
