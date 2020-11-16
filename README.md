@@ -1,7 +1,7 @@
 # inceptus
-The inceptus is (for now) a perosnal framework for making servers in go..
+The inceptus is (for now) a personal framework for making servers in go..
 
-Clone this repo and follow instructions in bootstrap.sh =>
+Clone this repo and follow the instructions in bootstrap.sh:
 ```
 $./bootstrap.sh -h
 Hey,
@@ -14,7 +14,7 @@ Usage:
     bootstrap.sh -n PROJECT_NAME -r REPOSITORY -d DIRECTORY
     where:
     - PROJECT_NAME will be used instead of "server_template"
-    - REPOSITORY will be used instead of:
+    - REPOSITORY (like github.com/XXX/YYY) will be used instead of:
       "github.com/robitx/inceptus/server_template"
     - DIRECTORY is a folder where you want to boostrap the server:
       ├── cmd
