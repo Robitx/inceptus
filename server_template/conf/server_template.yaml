@@ -22,3 +22,4 @@ Rest:
 
 Auth:
   FirebaseAccountKeyFile: "/zaloha/DataCube/inceptus/you_need_your_own.json"
+  FirebaseAccountKeyFile: ""
