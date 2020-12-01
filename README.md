@@ -21,14 +21,32 @@ Usage:
       │   └── server
       │       └── main.go
       ├── conf
-      │   ├── PROJECT_NAME.env
-      │   └── PROJECT_NAME.yaml
-      └── internal
-          ├── do
-          │   └── do.go
-          └── env
-              ├── config.go
-              └── environment.go
+      │   ├── server_template.env
+      │   └── server_template.yaml
+      ├── internal
+      │   ├── do
+      │   │   └── do.go
+      │   ├── env
+      │   │   ├── config.go
+      │   │   └── environment.go
+      │   └── rest
+      │       └── rest.go
+      ├── main
+      └── static
+          ├── errors
+          │   └── 404.html
+          └── index.html
       ...
-
 ```
+
+Starting local instance of the server:
+```
+go build ./cmd/server/main.go; ./main -c conf/server_template.yaml
+```
+
+Trying the api:
+```
+url -D - -v -X GET localhost:9999/api/v1/echo -H "x-request-ids: requestID_XYZ" -H "accessToken: JWT_HERE" -d 'hey!'
+```
+
+For static site hello world go to http://localhost:9999/static/
