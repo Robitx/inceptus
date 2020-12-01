@@ -44,6 +44,7 @@ func It(app *env.App) {
 	apiv1.Get("/", rest.Echo)
 	apiv1.Get("/ping", rest.Ping)
 	apiv1.Get("/panic", rest.Panic)
+	apiv1.Get("/echo", rest.Echo)
 	apiv1.Get("/hi-user", rest.HiUser)
 	router.Mount("/api/v1", apiv1)
 
