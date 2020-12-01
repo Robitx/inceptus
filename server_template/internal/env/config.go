@@ -17,7 +17,16 @@ type Config struct {
 		Mask string
 	}
 
+	Rest struct {
+		GenerateDoc bool
+	}
+
 	Dummy struct{
 		StringSlice []string
+	}
+
+	Auth struct {
+		// JSON file from https://console.firebase.google.com/
+		FirebaseAccountKeyFile string
 	}
 }

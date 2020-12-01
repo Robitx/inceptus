@@ -16,3 +16,9 @@ Dummy:
     - C
     - D
     - E
+
+Rest:
+  GenerateDoc: true
+
+Auth:
+  FirebaseAccountKeyFile: "/zaloha/DataCube/inceptus/you_need_your_own.json"
