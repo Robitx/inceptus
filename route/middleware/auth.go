@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"fmt"
 	"net/http"
 
 	"context"
@@ -31,7 +30,8 @@ opt := option.WithCredentialsFile(credentialsFile)
 
 
 // Auth middleware which uses Firebase auth tokens
-// denies unathorized access or puts userID into ctx
+// and puts userID into ctx for handlers to decide what
+// can be accessed by given user
 func Auth(
   realm string,
   authHeader string,
@@ -44,15 +44,19 @@ func Auth(
 		fn := func(w http.ResponseWriter, r *http.Request) {
       rawToken := r.Header.Get(authHeader)
       token, err := auther.VerifyIDToken(r.Context(), rawToken)
-      if err != nil {
-        w.Header().Add("WWW-Authenticate",
-          fmt.Sprintf(`Bearer realm="%s"`, realm))
-        w.WriteHeader(http.StatusUnauthorized)
-        w.Write([]byte("You're not authorized"))
-        return
+      var uid string
+      if err == nil {
+        uid = token.UID
       }
+      // if err != nil {
+      //   w.Header().Add("WWW-Authenticate",
+      //     fmt.Sprintf(`Bearer realm="%s"`, realm))
+      //   w.WriteHeader(http.StatusUnauthorized)
+      //   w.Write([]byte("You're not authorized"))
+      //   return
+      // }
 
-      r = c.SetUserID(token.UID, r)
+      r = c.SetUserID(uid, r)
 
 			next.ServeHTTP(w, r)
 		}
