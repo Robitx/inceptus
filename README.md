@@ -1,5 +1,11 @@
 # inceptus
-The inceptus is (for now) a personal framework for making servers in go..
+The inceptus is (for now) a personal framework for making (web) servers in go..
+
+The goal of inceptus is to have all you need to start making a new full stack web app (PWA with golang backend).
+
+Just call bootstrap.sh and have all the boring boilerplate ready, so you can invest time in what actually matters..
+
+-------------------------------------
 
 Clone this repo and follow the instructions in bootstrap.sh:
 ```
