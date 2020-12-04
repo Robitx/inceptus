@@ -1,6 +1,6 @@
 # inceptus
 [![Go Report Card](https://goreportcard.com/badge/github.com/robitx/inceptus)](https://goreportcard.com/report/github.com/robitx/inceptus)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/robitx/inceptus/blob/master/LICENSE.md)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Robitx/inceptus/blob/main/LICENSE)
 
 The inceptus is (for now) a personal framework for making (web) servers in go..
 
