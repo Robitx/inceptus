@@ -1,4 +1,7 @@
 # inceptus
+[![Go Report Card](https://goreportcard.com/badge/github.com/robitx/inceptus)](https://goreportcard.com/report/github.com/robitx/inceptus)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/robitx/inceptus/blob/master/LICENSE.md)
+
 The inceptus is (for now) a personal framework for making (web) servers in go..
 
 The goal of inceptus is to have all you need to start making a new full stack web app (PWA with golang backend).
