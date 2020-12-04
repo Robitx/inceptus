@@ -1,8 +1,8 @@
 package main
 
 import (
-	do "github.com/robitx/inceptus/server_template/internal/do"
-	env "github.com/robitx/inceptus/server_template/internal/env"
+	do "github.com/robitx/inceptus/_server_template/internal/do"
+	env "github.com/robitx/inceptus/_server_template/internal/env"
 )
 
 func main() {

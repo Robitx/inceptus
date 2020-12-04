@@ -1,6 +1,6 @@
 #!/bin/bash
 
-orig_repository="github.com/robitx/inceptus/server_template"
+orig_repository="github.com/robitx/inceptus/_server_template"
 
 usage()
 {
@@ -60,8 +60,8 @@ then
   exit 1;
 fi
 
-echo -e "Copying files from server_template/* to $directory:"
-cp -v -r ./server_template/* "$directory";
+echo -e "Copying files from _server_template/* to $directory:"
+cp -v -r ./_server_template/* "$directory";
 echo -e "DONE\n";
 
 echo "Renaming some files:"

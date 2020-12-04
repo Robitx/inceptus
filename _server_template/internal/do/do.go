@@ -6,9 +6,10 @@ import (
 	"os"
 	"path/filepath"
 
+	env "github.com/robitx/inceptus/_server_template/internal/env"
+	rest "github.com/robitx/inceptus/_server_template/internal/rest"
+
 	middleware "github.com/robitx/inceptus/route/middleware"
-	env "github.com/robitx/inceptus/server_template/internal/env"
-	rest "github.com/robitx/inceptus/server_template/internal/rest"
 
 	route "github.com/robitx/inceptus/route"
 )
