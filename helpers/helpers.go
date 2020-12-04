@@ -1,3 +1,5 @@
+// Package helpers contains some useful functions, currently:
+// generating uuid, md5 from string, sourceIp
 package helpers
 
 import (

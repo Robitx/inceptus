@@ -1,3 +1,5 @@
+// package middleware contains middlewares
+// for logging, auth, custom errors and so on
 package middleware
 
 import (

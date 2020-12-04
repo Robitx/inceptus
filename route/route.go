@@ -1,3 +1,5 @@
+// package route and its subpackages provides
+// most of what you need for http server
 package route
 
 import (
