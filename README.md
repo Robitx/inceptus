@@ -1,4 +1,5 @@
 # inceptus
+[![Docs](https://img.shields.io/badge/docs-current-brightgreen.svg)](https://pkg.go.dev/github.com/robitx/inceptus)
 [![Go Report Card](https://goreportcard.com/badge/github.com/robitx/inceptus)](https://goreportcard.com/report/github.com/robitx/inceptus)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Robitx/inceptus/blob/main/LICENSE)
 
