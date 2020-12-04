@@ -21,7 +21,7 @@ type Config struct {
 		GenerateDoc bool
 	}
 
-	Dummy struct{
+	Dummy struct {
 		StringSlice []string
 	}
 

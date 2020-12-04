@@ -6,9 +6,9 @@ import (
 
 // ErrorResponseWriter ..
 type errorResponseWriter struct {
-	w http.ResponseWriter
+	w           http.ResponseWriter
 	intercepted bool
-	responses map[int][]byte
+	responses   map[int][]byte
 	contentType string
 }
 
@@ -24,7 +24,7 @@ func (e *errorResponseWriter) Write(b []byte) (int, error) {
 		return e.w.Write(b)
 	}
 
-	// nothing if we intercepted the WriteHeader 
+	// nothing if we intercepted the WriteHeader
 	return 0, nil
 }
 
@@ -49,13 +49,13 @@ func (e *errorResponseWriter) WriteHeader(statusCode int) {
 //
 // You might want to use one for rest api with text/plain content and
 // otherone for stuff vidible by user with text/html content type.
-// 
+//
 // Here is an example usage:
 //		contentType := "text/plain; charset=utf-8"
 //		customErrors := make(map[int][]byte)
 //		customErrors[http.StatusNotFound] = []byte("custom 404..")
 // 		...
-//		
+//
 //		errorMiddleware := middleware.Error(contentType, customErrors)
 //		server := &http.Server{
 //			Addr: ":XXXX",
@@ -65,14 +65,14 @@ func (e *errorResponseWriter) WriteHeader(statusCode int) {
 func Error(
 	contentType string,
 	responses map[int][]byte,
-	) func(next http.Handler) http.Handler {
+) func(next http.Handler) http.Handler {
 
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			ew := &errorResponseWriter{
-				w: w,
+				w:           w,
 				intercepted: false,
-				responses: responses,
+				responses:   responses,
 				contentType: contentType,
 			}
 			next.ServeHTTP(ew, r)

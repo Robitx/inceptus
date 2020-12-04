@@ -17,6 +17,10 @@ func (fs filesSystem) Open(path string) (http.File, error) {
 	}
 
 	s, err := f.Stat()
+	if err {
+		return nil, err
+	}
+
 	if s.IsDir() {
 		index := filepath.Join(path, "index.html")
 		if _, err := fs.fs.Open(index); err != nil {
@@ -30,21 +34,21 @@ func (fs filesSystem) Open(path string) (http.File, error) {
 	}
 
 	return f, nil
-}    
+}
 
 // FilesServer gives you a (sub)router that serves only files
 // from a directory (it hides your direcory structure) - accessing
 // a (sub)directory will lead to index.html or StatusNotFound
 //
 // A full path to served dir is required.
-// 
+//
 // If mounted as a subrouter under certain path XY,
 // specify stripPrefix equal to the mounting path XY.
-// 
+//
 // Here is an example usage:
 //	 router := route.New()
 //	 ...
-//	 workDir, _ := os.Getwd()	
+//	 workDir, _ := os.Getwd()
 //	 dir := filepath.Join(workDir, "relative_path_to_dir")
 //	 router.Mount("/static", route.FileServer("/static", dir))
 func FilesServer(stripPrefix string, dir string) Router {

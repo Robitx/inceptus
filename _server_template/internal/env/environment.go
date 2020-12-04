@@ -19,7 +19,7 @@ import (
 type App struct {
 	// App wide context with cancel function
 	// and some helper functions to register syscalls for smooth app termination
-	// and reloading (conf, logger and such) 
+	// and reloading (conf, logger and such)
 	life.AppContext
 
 	// App specific config struct populated from conf file or envs
@@ -53,7 +53,6 @@ func New() *App {
 		Interface("config", config).
 		Msg("showing config")
 
-
 	// Preparing app wide context that supports smooth app termination
 	appCtx := life.New()
 	appCtx.RegisterStopSignals(config.Control.DieTimeout,
@@ -61,8 +60,8 @@ func New() *App {
 
 	appEnv := &App{
 		AppContext: appCtx,
-		Logger: logger,
-		Config: config,
+		Logger:     logger,
+		Config:     config,
 	}
 
 	// Cleanup starts after app context finishes

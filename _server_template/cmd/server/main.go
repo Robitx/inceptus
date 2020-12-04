@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// bundle for application state
-	// (config, logger, app wide context and so on..) 
+	// (config, logger, app wide context and so on..)
 	appEnv := env.New()
 
 	// For app specific logic

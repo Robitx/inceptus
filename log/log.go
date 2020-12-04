@@ -1,4 +1,4 @@
-// Package logger provides basic logging mechanism
+// Package log provides basic logging mechanism
 // You can log into physical file, but log rotation is not implemented,
 // see https://12factor.net/logs =>
 // Ideally write to /dev/stderr|stdout|null and use something like
@@ -10,7 +10,7 @@
 // TODO
 // - Enrich logger with methods of std logger for use in third party libs that needs it
 // - If you get really bored some day:
-// -- implement rolling files with https://github.com/natefinch/lumberjack 
+// -- implement rolling files with https://github.com/natefinch/lumberjack
 // -- allow writing into multiple files with io.MultiWriter
 
 package logger
@@ -27,8 +27,8 @@ import (
 // Logger represents wraper for logging mechanism
 type Logger struct {
 	zerolog.Logger
-	file   *os.File
-	mask   string
+	file *os.File
+	mask string
 }
 
 // OpenFileHelper tries to make or create file (including dirs)
@@ -38,7 +38,6 @@ func OpenFileHelper(name string) (*os.File, error) {
 	return os.OpenFile(name,
 		os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
 }
-
 
 // closeFile tries to close file and returns it's name
 func (l *Logger) closeFile() string {
@@ -72,30 +71,29 @@ func TimestampHook() zerolog.HookFunc {
 // StaticHook returns hook for logging static name, value pair to every probe
 // (like hostname, PID, local IP and such..), basic types are cast to avoid reflection
 func StaticHook(name string, value interface{}) zerolog.HookFunc {
-		switch typedValue := value.(type) {
-			case float64:
-				return zerolog.HookFunc(
-					func(e *zerolog.Event, level zerolog.Level, msg string) {
-						e.Float64(name, typedValue)
-					})
-			case int:
-				return zerolog.HookFunc(
-					func(e *zerolog.Event, level zerolog.Level, msg string) {
-						e.Int(name, typedValue)
-					})
-			case string:
-				return zerolog.HookFunc(
-					func(e *zerolog.Event, level zerolog.Level, msg string) {
-						e.Str(name, typedValue)
-					})
-			default:
-				return zerolog.HookFunc(
-					func(e *zerolog.Event, level zerolog.Level, msg string) {
-						e.Interface(name, typedValue)
-					})
-		}
+	switch typedValue := value.(type) {
+	case float64:
+		return zerolog.HookFunc(
+			func(e *zerolog.Event, level zerolog.Level, msg string) {
+				e.Float64(name, typedValue)
+			})
+	case int:
+		return zerolog.HookFunc(
+			func(e *zerolog.Event, level zerolog.Level, msg string) {
+				e.Int(name, typedValue)
+			})
+	case string:
+		return zerolog.HookFunc(
+			func(e *zerolog.Event, level zerolog.Level, msg string) {
+				e.Str(name, typedValue)
+			})
+	default:
+		return zerolog.HookFunc(
+			func(e *zerolog.Event, level zerolog.Level, msg string) {
+				e.Interface(name, typedValue)
+			})
+	}
 }
-
 
 // New creates logger
 // if opening log file fails, logger will fallback to stderr

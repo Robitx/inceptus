@@ -37,7 +37,7 @@ func (a *AppContext) ByeTime() bool {
 func (a *AppContext) RunForever() {
 
 	// Memory ballast hack to reduce GC times
-	// https://blog.twitch.tv/en/2019/04/10/go-memory-ballast-how-i-learnt-to-stop-worrying-and-love-the-heap-26c2462549a2/ 
+	// https://blog.twitch.tv/en/2019/04/10/go-memory-ballast-how-i-learnt-to-stop-worrying-and-love-the-heap-26c2462549a2/
 	ballast := make([]byte, 10<<30)
 	_ = len(ballast)
 

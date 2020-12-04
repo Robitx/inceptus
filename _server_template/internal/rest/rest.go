@@ -13,7 +13,7 @@ import (
 
 // NotFound ..
 func NotFound(file string) func(w http.ResponseWriter, r *http.Request) {
-	workDir, _ := os.Getwd()	
+	workDir, _ := os.Getwd()
 	file = filepath.Join(workDir, file)
 	response, _ := ioutil.ReadFile(file)
 
@@ -35,7 +35,6 @@ func Echo(w http.ResponseWriter, r *http.Request) {
 	w.Write(buffer.Bytes())
 }
 
-
 // HiUser ..
 func HiUser(w http.ResponseWriter, r *http.Request) {
 	userID := c.GetUserID(r)
@@ -46,7 +45,6 @@ func HiUser(w http.ResponseWriter, r *http.Request) {
 func Ping(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("pong"))
 }
-
 
 // Panic ..
 func Panic(w http.ResponseWriter, r *http.Request) {
