@@ -1,0 +1,4 @@
+# Binaries for programs and plugins
+*.json
+_server_template/main
+_server_template/static/garbage/
