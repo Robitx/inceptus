@@ -1,4 +1,4 @@
-// package middleware contains middlewares
+// Package middleware contains middlewares
 // for logging, auth, custom errors and so on
 package middleware
 

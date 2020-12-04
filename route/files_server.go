@@ -17,7 +17,7 @@ func (fs filesSystem) Open(path string) (http.File, error) {
 	}
 
 	s, err := f.Stat()
-	if err {
+	if err != nil {
 		return nil, err
 	}
 
