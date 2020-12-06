@@ -59,14 +59,6 @@ Starting local instance of the server:
 go build ./cmd/server/main.go; ./main -c conf/server_template.yaml
 ```
 
-Trying the api:
-```
-url -D - -v -X GET localhost:9999/api/v1/echo -H "x-request-ids: requestID_XYZ" -H "accessToken: JWT_HERE" -d 'hey!'
-```
-
-For static site hello world go to http://localhost:9999/static/
-
-
 -------------------------------------
 
 ##  Build and run with Docker
@@ -86,3 +78,14 @@ Interactive shell:
 ```
 docker exec -ti server_template sh
 ```
+
+-------------------------------------
+
+##  Try the API and Site
+
+Trying the api:
+```
+url -D - -v -X GET localhost:8080/api/v1/echo -H "x-request-ids: requestID_XYZ" -H "accessToken: JWT_HERE" -d 'hey!'
+```
+
+For static site hello world go to http://localhost:8080/static/
