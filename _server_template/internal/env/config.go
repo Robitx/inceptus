@@ -17,8 +17,9 @@ type Config struct {
 		Mask string
 	}
 
-	Rest struct {
+	Router struct {
 		GenerateDoc bool
+		Addr string
 	}
 
 	Dummy struct {
