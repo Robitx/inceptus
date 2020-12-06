@@ -52,7 +52,7 @@ Usage:
 
 -------------------------------------
 
-##  Local
+##  Build and run locally
 
 Starting local instance of the server:
 ```
@@ -69,7 +69,9 @@ For static site hello world go to http://localhost:9999/static/
 
 -------------------------------------
 
-##  Docker
+##  Build and run with Docker
+Template results in an image based on [distroless](https://github.com/GoogleContainerTools/distroless) that has ~50MB and could be sized down even more by eliminating busybox shell. The server inside is run as nobody:nobody, just to be on safer side. I'll add Makefile to simplify the build and run process later.
+
 Build:
 ```
 docker build --tag server_template -f ./server_template.Dockerfile ./
