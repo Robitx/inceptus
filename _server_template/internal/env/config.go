@@ -7,7 +7,7 @@ import (
 // Config is struct with unmarshalled application config
 type Config struct {
 	Control struct {
-		// Time for gracefull app exit
+		// Time for graceful app exit
 		DieTimeout time.Duration
 	}
 	Log struct {
