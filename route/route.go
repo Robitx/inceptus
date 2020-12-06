@@ -3,6 +3,8 @@
 package route
 
 import (
+	"os"
+
 	chi "github.com/go-chi/chi"
 	docgen "github.com/go-chi/docgen"
 	// middleware "github.com/go-chi/chi/middleware"
@@ -20,5 +22,9 @@ func New() Router {
 
 // GenerateDocs json docs string for the router
 func GenerateDocs(r Router) string {
+	// docgen need gopath for whatever reason
+	if gp := os.Getenv("GOPATH"); gp == "" {
+		os.Setenv("GOPATH", "/dummy")
+	}
 	return docgen.JSONRoutesDoc(r.Router)
 }
