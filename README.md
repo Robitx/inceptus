@@ -10,6 +10,7 @@ The goal of inceptus is to have all you need to start making a new full stack we
 Just call bootstrap.sh and have all the boring boilerplate ready, so you can invest time in what actually matters..
 
 -------------------------------------
+## Bootstraping
 
 Clone this repo and follow the instructions in bootstrap.sh:
 ```
@@ -49,6 +50,10 @@ Usage:
       ...
 ```
 
+-------------------------------------
+
+##  Local
+
 Starting local instance of the server:
 ```
 go build ./cmd/server/main.go; ./main -c conf/server_template.yaml
@@ -60,3 +65,22 @@ url -D - -v -X GET localhost:9999/api/v1/echo -H "x-request-ids: requestID_XYZ" 
 ```
 
 For static site hello world go to http://localhost:9999/static/
+
+
+-------------------------------------
+
+##  Docker
+Build:
+```
+docker build --tag server_template -f ./server_template.Dockerfile ./
+```
+
+Run:
+```
+docker run  --rm --name server_template -p 127.0.0.1:8080:8080 server_template:latest
+```
+
+Interactive shell:
+```
+docker exec -ti server_template sh
+```
