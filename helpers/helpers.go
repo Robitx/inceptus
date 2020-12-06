@@ -25,9 +25,9 @@ func GenerateID() string {
 // GetEnvs returns map of envs
 func GetEnvs() map[string]string {
 	envs := make(map[string]string)
-  for _, e := range os.Environ() {
-			touple := strings.SplitN(e, "=", 2)
-			envs[touple[0]] = touple[1]
+	for _, e := range os.Environ() {
+		touple := strings.SplitN(e, "=", 2)
+		envs[touple[0]] = touple[1]
 	}
 	return envs
 }

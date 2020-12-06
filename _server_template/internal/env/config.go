@@ -19,7 +19,7 @@ type Config struct {
 
 	Router struct {
 		GenerateDoc bool
-		Addr string
+		Addr        string
 	}
 
 	Dummy struct {

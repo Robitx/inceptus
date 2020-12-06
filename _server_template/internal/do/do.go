@@ -56,7 +56,7 @@ func It(app *env.App) {
 	}
 
 	server := &http.Server{
-		Addr: app.Router.Addr,
+		Addr:    app.Router.Addr,
 		Handler: router,
 		// Handler: http.HandlerFunc(rest.Ping),
 	}
