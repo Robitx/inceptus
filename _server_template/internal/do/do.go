@@ -2,16 +2,15 @@ package do
 
 import (
 	"io/ioutil"
-	http "net/http"
+	"net/http"
 	"os"
 	"path/filepath"
 
 	env "github.com/robitx/inceptus/_server_template/internal/env"
 	rest "github.com/robitx/inceptus/_server_template/internal/rest"
 
-	middleware "github.com/robitx/inceptus/route/middleware"
-
 	route "github.com/robitx/inceptus/route"
+	middleware "github.com/robitx/inceptus/route/middleware"
 )
 
 // It starts doing the real application specific work
@@ -48,16 +47,21 @@ func It(app *env.App) {
 	router.Mount("/api/v1", apiv1)
 
 	// Write routes schema to the beginning of the log
-	if app.Rest.GenerateDoc {
-		app.Logger.Info().
-			RawJSON("doc", []byte(route.GenerateDocs(router))).
-			Msg("")
+	if app.Router.GenerateDoc {
+		go func() {
+			app.Logger.Info().
+				RawJSON("doc", []byte(route.GenerateDocs(router))).
+				Msg("")
+		}()
 	}
 
 	server := &http.Server{
-		Addr: ":9999",
-		// Handler: errorMiddleware(router),
+		Addr: app.Router.Addr,
 		Handler: router,
+		// Handler: http.HandlerFunc(rest.Ping),
 	}
-	server.ListenAndServe()
+	err := server.ListenAndServe()
+	app.Logger.Error().
+		Err(err).
+		Msg("server failed")
 }
