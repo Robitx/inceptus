@@ -10,6 +10,7 @@ import (
 	"time"
 
 	conf "github.com/robitx/inceptus/conf"
+	helpers "github.com/robitx/inceptus/helpers"
 	life "github.com/robitx/inceptus/life"
 	log "github.com/robitx/inceptus/log"
 )
@@ -52,6 +53,10 @@ func New() *App {
 	logger.Info().
 		Interface("config", config).
 		Msg("showing config")
+
+	logger.Info().
+		Interface("envs", helpers.GetEnvs()).
+		Msg("showing envs")
 
 	// Preparing app wide context that supports smooth app termination
 	appCtx := life.New()
