@@ -2,8 +2,8 @@ Control:
     DieTimeout: 5s
 
 Log:
-    File: "/tmp/server_template/log"
-    File: "/dev/stderr"
+    # File: "/tmp/server_template/log"
+    # File: "/dev/stderr"
     File: "/dev/stdout"
     # trace/debug/info/warn/error/fatal/panic
     Mask: "info" 
@@ -17,9 +17,10 @@ Dummy:
     - D
     - E
 
-Rest:
+Router:
   GenerateDoc: true
+  Addr: :8080
 
 Auth:
-  FirebaseAccountKeyFile: "/zaloha/DataCube/inceptus/you_need_your_own.json"
+  # FirebaseAccountKeyFile: "/zaloha/DataCube/inceptus/you_need_your_own.json"
   FirebaseAccountKeyFile: ""
