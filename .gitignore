@@ -2,3 +2,4 @@
 *.json
 _server_template/main
 _server_template/static/garbage/
+_server_template/_proxy/certs/*.pem

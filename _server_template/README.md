@@ -52,7 +52,7 @@ Usage:
 
 -------------------------------------
 
-##  Build and run locally
+## Build and run locally
 
 Starting local instance of the server:
 ```
@@ -61,7 +61,7 @@ go build ./cmd/server/main.go; ./main -c conf/server_template.yaml
 
 -------------------------------------
 
-##  Build and run with Docker
+## Build and run with Docker
 Template results in an image based on [distroless](https://github.com/GoogleContainerTools/distroless) that has ~50MB and could be sized down even more by eliminating busybox shell. The server inside is run as nobody:nobody, just to be on safer side. I'll add Makefile to simplify the build and run process later.
 
 Build:
@@ -81,7 +81,7 @@ docker exec -ti server_template sh
 
 -------------------------------------
 
-##  Try the API and Site
+## Try the API and Site
 
 Trying the api:
 ```
@@ -89,3 +89,37 @@ url -D - -v -X GET localhost:8080/api/v1/echo -H "x-request-ids: requestID_XYZ" 
 ```
 
 For static site hello world go to http://localhost:8080/static/
+
+
+-------------------------------------
+
+## HTTPS for local development
+To get https for localhost - install [mkcert](https://github.com/FiloSottile/mkcert) and run the following:
+```
+# will create root CA and add it to your system and browsers (might need restart)
+mkcert -install
+
+# generated CA can be found under
+mkcert -CAROOT
+
+# !NOTE! Run this (after the bootstrap) with your own PROJECT_NAME instead of server_template
+mkcert -cert-file _proxy/certs/local-cert.pem -key-file _proxy/certs/local-key.pem "*.server_template.localhost" "server_template.localhost"
+```
+
+
+-------------------------------------
+
+## Docker compose
+Run the following to run the whole dev stack (proxy with https (requires generating your own certs with mkcert), database (TODO) and the app itself):
+```
+docker-compose -f docker-compose-dev.yaml up
+```
+
+Dashboard of Traefik proxy: https://traefik.server_template.localhost
+
+Static site hello world: https://server_template.localhost/static/
+
+The api:
+```
+curl -D - -v -X GET https://server_template.localhost/api/v1/echo -H "x-request-ids: requestID_XYZ" -H "accessToken: JWT_HERE" -d 'hey!'
+```

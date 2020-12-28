@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  # db:
+  #   image: "postgres" 
+  #   env_file:
+  #     - _database/db.env
+  #   volumes:
+  #     - data:/var/lib/postgresql/data/ 
+
+  server_template_proxy:
+    image: "traefik:v2.4"
+    container_name: "server_template_proxy"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./_proxy/traefik.yaml:/etc/traefik/traefik.yaml:ro"
+      - "./_proxy/config.yaml:/etc/traefik/config.yaml:ro"
+      - "./_proxy/certs:/etc/certs:ro"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik=true"
+
+  server_template:
+    container_name: "server_template"
+    image: server_template 
+    build:
+      context: .
+      dockerfile: server_template.Dockerfile
+    depends_on:
+      - "server_template_proxy"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.server_template.rule=Host(`server_template.localhost`)"
+      - "traefik.http.routers.server_template.tls=true"
+
+
+volumes:
+  data: 
