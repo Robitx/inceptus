@@ -18,10 +18,10 @@ type Pool struct {
 }
 
 // New creates Pool of tcp connections to database
-// 
+//
 // DSN for TCP conn is specified as:
 // fmt.Sprintf("host=%s user=%s password=%s port=%s database=%s", dbTcpHost, dbUser, dbPwd, dbPort, dbName)
-// 
+//
 // DSN for Unix socket is specified as:
 // fmt.Sprintf("user=%s password=%s database=%s host=%s/%s", dbUser, dbPwd, dbName, socketDir, instanceConnectionName)
 func New(
@@ -31,7 +31,7 @@ func New(
 	connMaxLife time.Duration,
 	connMaxOpenIdle int,
 	connMaxOpen int,
-	) (*Pool, error){
+) (*Pool, error) {
 
 	// prep config
 	config, err := pgx.ParseConfig(dsn)
@@ -40,7 +40,7 @@ func New(
 	}
 
 	// prep logger
-	level, err := pgx.LogLevelFromString(logger.GetLevel().String()) 
+	level, err := pgx.LogLevelFromString(logger.GetLevel().String())
 	if err != nil {
 		level = pgx.LogLevelInfo
 	}
