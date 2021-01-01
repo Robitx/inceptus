@@ -92,9 +92,6 @@ func LoadYAML(file string, config interface{}) error {
 // NOTE: Slices in ENVs need value separation by comma: val1,val2,..
 func LoadENV(envprefix string, config interface{}) error {
 	envprefix = strings.TrimSuffix(envprefix, "_")
-	if envprefix == "" {
-		return fmt.Errorf("empty env prefix specified")
-	}
 
 	v, err := initViper(config)
 	if err != nil {
