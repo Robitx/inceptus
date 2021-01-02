@@ -1,3 +1,45 @@
+// Package db provides Pool for communicationg with Postgre database
+// Example usage:
+//
+//   // Preparing database connection pool
+//   DBPool, err := db.New(
+//   	fmt.Sprintf("host=%s port=%s user=%s password=%s database=%s",
+//   		config.Database.Host,
+//   		config.Database.Port,
+//   		config.Database.User,
+//   		config.Database.Password,
+//   		config.Database.Database),
+//   	logger,
+//   	config.Database.Connections.MaxIdle,
+//   	config.Database.Connections.MaxLife,
+//   	config.Database.Connections.MaxOpenIdle,
+//   	config.Database.Connections.MaxOpen,
+//   )
+//
+//   // Creating table
+//   _, err := DBPool.ExecContext(context.Background(), "CREATE TABLE IF NOT EXISTS dummy(name TEXT);")
+//   if err != nil {
+//   	fmt.Fprintf(os.Stderr, "table creation failed: %v\n", err)
+//   	os.Exit(1)
+//   }
+//
+//   // Adding data to table
+//   _, err := DBPool.ExecContext(context.Background(), "insert into dummy(name) values($1)", "app item")
+//   if err != nil {
+//   	fmt.Fprintf(os.Stderr, "Insert failed: %v\n", err)
+//   	os.Exit(1)
+//   }
+//
+//   // Selecting data from table
+//   rows, _ := DBPool.QueryContext(context.Background(), "select * from dummy")
+//   for rows.Next() {
+//   	var name string
+//   	err := rows.Scan(&name)
+//   	if err != nil {
+//   		fmt.Fprintf(os.Stderr, "Scan failed: %v\n", err)
+//   	}
+//   	fmt.Printf("%s\n", name)
+//   }
 package db
 
 import (
@@ -32,7 +74,6 @@ func New(
 	connMaxOpenIdle int,
 	connMaxOpen int,
 ) (*Pool, error) {
-
 	// prep config
 	config, err := pgx.ParseConfig(dsn)
 	if err != nil {
