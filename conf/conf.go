@@ -1,5 +1,7 @@
 // Package conf provide functions for loading config
-// from yaml file or env variables
+// from yaml file or env variables.
+//
+//
 package conf
 
 import (

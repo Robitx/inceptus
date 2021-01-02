@@ -1,5 +1,7 @@
 // Package middleware contains middlewares
-// for logging, auth, custom errors and so on
+// for logging, auth, custom errors and so on.
+//
+//
 package middleware
 
 import (
@@ -24,7 +26,6 @@ func Base(
 ) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
-
 			requestID := c.GetRequestID(requestIDheader, r)
 			r = c.SetRequestID(requestID, r)
 

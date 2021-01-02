@@ -1,4 +1,5 @@
-// Package db provides Pool for communicationg with Postgre database
+// Package db provides Pool for communicationg with Postgre database.
+//
 // Example usage:
 //
 //   // Preparing database connection pool

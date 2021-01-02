@@ -1,4 +1,4 @@
-// Package serialize provides unified interface for encoding and decoding data with several implementations (JSON, MsgPack, Gob, ..)
+// Package serialize provides unified interface for encoding and decoding data with several implementations (JSON, MsgPack, Gob, ..).
 //
 // Example usage:
 //

@@ -1,4 +1,6 @@
-// Package ctx contains setters and getters for request context
+// Package ctx contains setters and getters for request context.
+//
+//
 package ctx
 
 import (

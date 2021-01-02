@@ -1,6 +1,8 @@
 // Package life provides application wide context with cancel function
 // and some helper functions to register syscalls for smooth app termination
-// and reloading (conf, logger and such)
+// and reloading (conf, logger and such).
+//
+//
 package life
 
 import (
@@ -35,7 +37,6 @@ func (a *AppContext) ByeTime() bool {
 // until there is a panic or kill signal
 // NOTE: Call this directly from main, without go!
 func (a *AppContext) RunForever() {
-
 	// Memory ballast hack to reduce GC times
 	// https://blog.twitch.tv/en/2019/04/10/go-memory-ballast-how-i-learnt-to-stop-worrying-and-love-the-heap-26c2462549a2/
 	ballast := make([]byte, 10<<30)

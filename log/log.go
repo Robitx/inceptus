@@ -1,4 +1,5 @@
-// Package log provides basic logging mechanism
+// Package log provides basic logging mechanism.
+//
 // You can log into physical file, but log rotation is not implemented,
 // see https://12factor.net/logs =>
 // Ideally write to /dev/stderr|stdout|null and use something like
@@ -6,13 +7,11 @@
 // https://github.com/agnivade/funnel for log post processing
 // (funnel supports multiple targets, storing into files with rotation and compression)
 // so let's not reinvent the wheel here..
-
-// TODO
+// TODO:
 // - Enrich logger with methods of std logger for use in third party libs that needs it
 // - If you get really bored some day:
 // -- implement rolling files with https://github.com/natefinch/lumberjack
 // -- allow writing into multiple files with io.MultiWriter
-
 package log
 
 import (
