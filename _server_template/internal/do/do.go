@@ -1,6 +1,8 @@
 package do
 
 import (
+	"context"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -54,6 +56,25 @@ func It(app *env.App) {
 				Msg("")
 		}()
 	}
+
+	go func() {
+		_, err := app.ExecContext(context.Background(), "insert into dummy(name) values($1)", "app item")
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Insert failed: %v\n", err)
+			os.Exit(1)
+		}
+
+		rows, _ := app.QueryContext(context.Background(), "select * from dummy")
+
+		for rows.Next() {
+			var name string
+			err := rows.Scan(&name)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Scan failed: %v\n", err)
+			}
+			fmt.Printf("%s\n", name)
+		}
+	}()
 
 	server := &http.Server{
 		Addr:    app.Router.Addr,

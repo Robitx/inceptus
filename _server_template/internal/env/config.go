@@ -30,4 +30,18 @@ type Config struct {
 		// JSON file from https://console.firebase.google.com/
 		FirebaseAccountKeyFile string
 	}
+
+	Database struct {
+		User        string
+		Password    string
+		Database    string
+		Host        string
+		Port        string
+		Connections struct {
+			MaxIdle     time.Duration
+			MaxLife     time.Duration
+			MaxOpenIdle int
+			MaxOpen     int
+		}
+	}
 }

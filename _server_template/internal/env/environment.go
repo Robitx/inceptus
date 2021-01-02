@@ -10,6 +10,7 @@ import (
 	"time"
 
 	conf "github.com/robitx/inceptus/conf"
+	db "github.com/robitx/inceptus/db"
 	helpers "github.com/robitx/inceptus/helpers"
 	life "github.com/robitx/inceptus/life"
 	log "github.com/robitx/inceptus/log"
@@ -28,6 +29,9 @@ type App struct {
 
 	// Logger wrapping zerolog
 	*log.Logger
+
+	// Connections to database
+	*db.Pool
 }
 
 // New prepares application environment
@@ -63,10 +67,32 @@ func New() *App {
 	appCtx.RegisterStopSignals(config.Control.DieTimeout,
 		syscall.SIGINT, syscall.SIGTERM)
 
+	// Preparing database connection pool
+	DBPool, err := db.New(
+		fmt.Sprintf("host=%s port=%s user=%s password=%s database=%s",
+			config.Database.Host,
+			config.Database.Port,
+			config.Database.User,
+			config.Database.Password,
+			config.Database.Database),
+		logger,
+		config.Database.Connections.MaxIdle,
+		config.Database.Connections.MaxLife,
+		config.Database.Connections.MaxOpenIdle,
+		config.Database.Connections.MaxOpen,
+	)
+	// No point to run without a database..
+	if err != nil {
+		logger.Fatal().
+			Err(err).
+			Msg("failed to establish database pool")
+	}
+
 	appEnv := &App{
 		AppContext: appCtx,
 		Logger:     logger,
 		Config:     config,
+		Pool:       DBPool,
 	}
 
 	// Cleanup starts after app context finishes
