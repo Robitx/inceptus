@@ -112,8 +112,17 @@ mkcert -cert-file _proxy/certs/local-cert.pem -key-file _proxy/certs/local-key.p
 ## Docker compose
 Run the following to run the whole dev stack (proxy with https (requires generating your own certs with mkcert), database (TODO) and the app itself):
 ```
-docker-compose -f docker-compose-dev.yaml up
+docker-compose -f docker-compose-dev.yaml up --detach --build
 ```
+
+To check logs:
+```
+# all containers
+docker-compose -f docker-compose-dev.yaml logs -f
+# just server_template logs
+docker-compose -f docker-compose-dev.yaml logs -f server_template
+```
+
 
 Dashboard of Traefik proxy: https://traefik.server_template.localhost
 
