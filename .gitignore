@@ -3,3 +3,4 @@
 _server_template/main
 _server_template/static/garbage/
 _server_template/_proxy/certs/*.pem
+_server_template/_sandbox/
