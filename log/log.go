@@ -13,7 +13,7 @@
 // -- implement rolling files with https://github.com/natefinch/lumberjack
 // -- allow writing into multiple files with io.MultiWriter
 
-package logger
+package log
 
 import (
 	"os"
