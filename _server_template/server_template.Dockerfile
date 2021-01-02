@@ -33,7 +33,7 @@ COPY . .
 
 # build the app
 RUN go build \
-# use native 
+    # use native 
     # force pure Go resolver on net and os/user
     # -tags='netgo osusergo' \
     # disable symbol table and DWARF debug info generation
