@@ -29,3 +29,5 @@ entryPoints:
           scheme: https
   https:
     address: ":443"
+  server_template_database:
+    address: ":5432"

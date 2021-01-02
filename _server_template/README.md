@@ -123,3 +123,16 @@ The api:
 ```
 curl -D - -v -X GET https://server_template.localhost/api/v1/echo -H "x-request-ids: requestID_XYZ" -H "accessToken: JWT_HERE" -d 'hey!'
 ```
+
+-------------------------------------
+
+## Database
+```
+docker exec -ti server_template_database bash
+psql --host=localhost --username=_server_template_db_user --dbname=_server_template_db
+```
+
+Postgre image uses server_template_database volume to persist data => the sql scripts in _database/init/*.sql are applied only once - if you change them, shut down and remove the volume, to start cleanly next time:
+```
+docker-compose -f docker-compose-dev.yaml down -v
+```

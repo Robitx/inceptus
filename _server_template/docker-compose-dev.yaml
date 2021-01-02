@@ -1,12 +1,6 @@
 version: '3'
 
 services:
-  # db:
-  #   image: "postgres" 
-  #   env_file:
-  #     - _database/db.env
-  #   volumes:
-  #     - data:/var/lib/postgresql/data/ 
 
   server_template_proxy:
     image: "traefik:v2.4"
@@ -14,6 +8,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "5432:5432"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./_proxy/traefik.yaml:/etc/traefik/traefik.yaml:ro"
@@ -22,6 +17,25 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik=true"
+
+  server_template_database:
+    image: "postgres" 
+    container_name: "server_template_database"
+    restart: always
+    env_file:
+      - _database/db.env
+    volumes:
+      - database:/var/lib/postgresql/data/ 
+      - "./_database/init:/docker-entrypoint-initdb.d/:ro"
+    depends_on:
+      - "server_template_proxy"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.server_template_database.rule=HostSNI(`*`)"
+      - "traefik.tcp.routers.server_template_database.service=server_template_database"
+      - "traefik.tcp.routers.server_template_database.tls=false"
+      - "traefik.tcp.services.server_template_database.loadbalancer.server.port=5432"
+      - "traefik.tcp.routers.server_template_database.entryPoints=server_template_database"
 
   server_template:
     container_name: "server_template"
@@ -33,6 +47,7 @@ services:
       - conf/server_template.env
     depends_on:
       - "server_template_proxy"
+      - "server_template_database"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.server_template.rule=Host(`server_template.localhost`)"
@@ -40,4 +55,4 @@ services:
 
 
 volumes:
-  data: 
+  database: 
