@@ -29,6 +29,8 @@ services:
     build:
       context: .
       dockerfile: server_template.Dockerfile
+    env_file:
+      - conf/server_template.env
     depends_on:
       - "server_template_proxy"
     labels:

@@ -85,7 +85,8 @@ RUN ["/busybox/sh", "-c", "ls -Rla ./"]
 USER 65534:65534
 
 # lets run the app
-ENTRYPOINT ["./server_template", "-c", "conf/server_template.yaml"]
+# ENTRYPOINT ["./server_template", "-c", "conf/server_template.yaml"]
+ENTRYPOINT ["./server_template", "-e", "server_template"]
 
 # app should serve on 8080
 EXPOSE 8080
