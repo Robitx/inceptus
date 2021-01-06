@@ -35,3 +35,7 @@ Usage:
       - DIRECTORY is a folder where you want to boostrap the server
 
 ```
+
+-------------------------------------
+## _server_template
+For more details head over to the [server_template readme](https://github.com/Robitx/inceptus/blob/main/_server_template/README.md).
