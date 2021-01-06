@@ -11,7 +11,6 @@ Just call bootstrap.sh and have all the boring boilerplate ready, so you can inv
 
 -------------------------------------
 ## Bootstraping
-
 Clone this repo, follow the simple instructions in [bootstrap.sh](https://github.com/Robitx/inceptus/blob/main/bootstrap.sh) and you're ready to Go!
 
 ```
@@ -35,6 +34,9 @@ Usage:
       - DIRECTORY is a folder where you want to boostrap the server
 
 ```
+<p align="left">
+  <img width="100%" src="https://raw.githubusercontent.com/Robitx/assets/main/inceptus_bootstrap_example.svg">
+</p>
 
 -------------------------------------
 ## _server_template
