@@ -5,7 +5,7 @@
 
 The inceptus is (for now a personal) framework for making (web) servers in go..
 
-*The goal of inceptus is to have all the basic boilerplate that go servers need so you can focus on the application/business/domain logic instead.*
+***The goal of inceptus is to have all the basic boilerplate that go servers need so you can focus on the application/business/domain logic instead.***
 
 Just call bootstrap.sh and have all the boring boilerplate ready, so you can invest time into what actually matters..
 
