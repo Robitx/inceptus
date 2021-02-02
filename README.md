@@ -17,7 +17,7 @@ Clone this repo, follow the simple instructions in [bootstrap.sh](https://github
 ```
 $./bootstrap.sh 
 Hello there,
-this script allows you to quickly bootstrap new golang server based on inceptus/_server_template.
+this script allows you to quickly bootstrap new golang server based on inceptus/server_template.
 
 Example:
 ./bootstrap.sh -n shiny_new_project -r github.com/XXXX/shiny_new_project -d /tmp/shiny_new_project
@@ -31,14 +31,14 @@ Usage:
     where:
       - PROJECT_NAME will be used instead of "server_template"
       - REPOSITORY (like github.com/XXX/YYY) will be used instead of:
-        "github.com/robitx/inceptus/_server_template"
+        "github.com/robitx/inceptus/server_template"
       - DIRECTORY is a folder where you want to boostrap the server
 
 ```
 
 -------------------------------------
-## _server_template
-For more details head over to the [server_template readme](https://github.com/Robitx/inceptus/blob/main/_server_template/README.md).
+## server_template
+For more details head over to the [server_template readme](https://github.com/Robitx/inceptus/blob/main/server_template/README.md).
 
 <p align="left">
   <img width="100%" src="https://raw.githubusercontent.com/Robitx/assets/main/inceptus_bootstrap_example.svg">

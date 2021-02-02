@@ -59,7 +59,7 @@ You can check the [dashboard](https://traefik.server_template.localhost) of the 
 If you want to interact with the database directly, run:
 ```
 docker exec -ti server_template_database bash
-psql --host=localhost --username=_server_template_db_user --dbname=_server_template_db
+psql --host=localhost --username=server_template_db_user --dbname=server_template_db
 ```
 
 Postgre image uses server_template_database volume to persist data => the sql scripts in _database/init/*.sql are applied only once => if you change them, shut down and remove the volume, to start cleanly next time:

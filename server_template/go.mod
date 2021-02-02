@@ -1,4 +1,4 @@
-module github.com/robitx/inceptus/_server_template
+module github.com/robitx/inceptus/server_template
 
 go 1.15
 

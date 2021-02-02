@@ -1,13 +1,13 @@
 #!/bin/bash
 
-orig_repository="github.com/robitx/inceptus/_server_template"
+orig_repository="github.com/robitx/inceptus/server_template"
 
 delimeter="========================================================================"
 
 usage()
 {
 echo """Hello there,
-this script allows you to quickly bootstrap new golang server based on inceptus/_server_template.
+this script allows you to quickly bootstrap new golang server based on inceptus/server_template.
 
 Example:
 ./bootstrap.sh -n shiny_new_project -r github.com/XXXX/shiny_new_project -d /tmp/shiny_new_project
@@ -56,8 +56,8 @@ fi
 echo -e "Trying to make $directory in case it doesn't exists:"
 mkdir -p "$directory";
 
-echo -e "Copying files from _server_template/* to $directory:"
-cp -v -r ./_server_template/* "$directory";
+echo -e "Copying files from server_template/* to $directory:"
+cp -v -r ./server_template/* "$directory";
 echo -e "DONE\n";
 
 echo "Renaming some files:"
