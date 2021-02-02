@@ -9,7 +9,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	os_signal "os/signal"
+	"os/signal"
 	"runtime"
 	"syscall"
 	"time"
@@ -50,12 +50,12 @@ type Reloader interface {
 	Reload()
 }
 
-// RegisterReloaders allows you to specify stuff you wan't to "reload" based on some signal
+// RegisterReloaders allows you to specify stuff you want to "reload" based on some signal
 // (like reloading config, or rotating log file based on SIGHUP)
 func (a *AppContext) RegisterReloaders(
-	signal syscall.Signal, reloaders ...Reloader) {
+	sig syscall.Signal, reloaders ...Reloader) {
 	listener := make(chan os.Signal)
-	os_signal.Notify(listener, signal)
+	signal.Notify(listener, sig)
 
 	go func() {
 		for {
@@ -73,14 +73,14 @@ func (a *AppContext) RegisterReloaders(
 func (a *AppContext) RegisterStopSignals(dieTimeout time.Duration,
 	signals ...syscall.Signal) {
 	listener := make(chan os.Signal)
-	for _, signal := range signals {
-		os_signal.Notify(listener, signal)
+	for _, sig := range signals {
+		signal.Notify(listener, sig)
 	}
 	go func() {
 		<-listener
 		// _signal := <- listener
 
-		os_signal.Stop(listener)
+		signal.Stop(listener)
 		a.StopApp()
 
 		fmt.Fprintf(os.Stderr, "\nWaiting %v before exiting.\n", dieTimeout)

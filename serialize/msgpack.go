@@ -1,7 +1,7 @@
 package serialize
 
 import (
-	msgpack "github.com/vmihailenco/msgpack/v5"
+	"github.com/vmihailenco/msgpack/v5"
 )
 
 // MsgPackCoder implements ByteCoder interface

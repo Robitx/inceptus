@@ -20,10 +20,10 @@ import (
 	"strings"
 	"time"
 
-	zerolog "github.com/rs/zerolog"
+	"github.com/rs/zerolog"
 )
 
-// Logger represents wraper for logging mechanism
+// Logger represents wrapper for logging mechanism
 type Logger struct {
 	zerolog.Logger
 	file *os.File
@@ -33,7 +33,7 @@ type Logger struct {
 // OpenFileHelper tries to make or create file (including dirs)
 // with proper flags for use in logger
 func OpenFileHelper(name string) (*os.File, error) {
-	os.MkdirAll(filepath.Dir(name), os.ModePerm)
+	_ = os.MkdirAll(filepath.Dir(name), os.ModePerm)
 	return os.OpenFile(name,
 		os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
 }
@@ -45,7 +45,7 @@ func (l *Logger) closeFile() string {
 	}
 
 	fileName := l.file.Name()
-	l.file.Close()
+	_ = l.file.Close()
 	l.file = nil
 	return fileName
 }

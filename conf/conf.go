@@ -92,8 +92,8 @@ func LoadYAML(file string, config interface{}) error {
 
 // LoadENV fills config variable from envs based on supplied prefix
 // NOTE: Slices in ENVs need value separation by comma: val1,val2,..
-func LoadENV(envprefix string, config interface{}) error {
-	envprefix = strings.TrimSuffix(envprefix, "_")
+func LoadENV(prefix string, config interface{}) error {
+	prefix = strings.TrimSuffix(prefix, "_")
 
 	v, err := initViper(config)
 	if err != nil {
@@ -102,7 +102,7 @@ func LoadENV(envprefix string, config interface{}) error {
 
 	// tell viper to use env variables
 	v.AutomaticEnv()
-	v.SetEnvPrefix(envprefix)
+	v.SetEnvPrefix(prefix)
 	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
 	return unmarshal(v, config)

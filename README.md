@@ -3,14 +3,14 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/robitx/inceptus)](https://goreportcard.com/report/github.com/robitx/inceptus)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Robitx/inceptus/blob/main/LICENSE)
 
-The inceptus is (for now a personal) framework for making (web) servers in go..
+The inceptus is (for now a personal) framework for making (web) servers in go...
 
-*The goal of inceptus is to have all the basic boilerplate that go servers need so you can focus on the application/business/domain logic instead.*
+***The goal of inceptus is to have all the basic boilerplate that go servers need, so you can focus on the application/business/domain logic instead.***
 
-Just call bootstrap.sh and have all the boring boilerplate ready, so you can invest time into what actually matters..
+Just call bootstrap.sh and have all the boring boilerplate ready, so you can invest time into what actually matters...
 
 -------------------------------------
-## Bootstraping
+## Bootstrapping
 
 Clone this repo, follow the simple instructions in [bootstrap.sh](https://github.com/Robitx/inceptus/blob/main/bootstrap.sh) and you're ready to Go!
 
@@ -35,3 +35,7 @@ Usage:
       - DIRECTORY is a folder where you want to boostrap the server
 
 ```
+
+-------------------------------------
+## _server_template
+For more details head over to the [server_template readme](https://github.com/Robitx/inceptus/blob/main/_server_template/README.md).
