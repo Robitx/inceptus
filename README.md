@@ -39,7 +39,7 @@ Usage:
 -------------------------------------
 ## _server_template
 For more details head over to the [server_template readme](https://github.com/Robitx/inceptus/blob/main/_server_template/README.md).
-=======
+
 <p align="left">
   <img width="100%" src="https://raw.githubusercontent.com/Robitx/assets/main/inceptus_bootstrap_example.svg">
 </p>
